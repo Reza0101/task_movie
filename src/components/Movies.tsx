@@ -1,15 +1,18 @@
 import { AiOutlineSearch } from "react-icons/ai";
-
+import BoxMovie from "./BoxMovie";
 
 const Movies = () => {
-    return (
-        <div
+  return (
+    <>
+      <div
         style={{ backgroundImage: "url(" + "./images/landing.png" + ")" }}
         className="w-full h-[30vh] text-center text-white bg-cover bg-center"
       >
         <div className="w-full h-[30vh] bg-black opacity-[0.7] absolute z-0"></div>
         <div className="z-10 relative pt-6">
-          <p className="md:text-[38px] text-[20px] font-bold">Wanna watch free movies & TV?</p>
+          <p className="md:text-[38px] text-[20px] font-bold">
+            Wanna watch free movies & TV?
+          </p>
           <p className="md:text-[22px] text-[17px]">
             Your Gateway To Movie Magic
           </p>
@@ -26,6 +29,24 @@ const Movies = () => {
           </div>
         </div>
       </div>
-    )
-}
+      <div className="my-5 px-6 md:px-28 lg:px-36 mx-auto w-full">
+        <div className="flex items-center w-full gap-2 py-4">
+          <button className="border shadow-sm border-blue-500 rounded-2xl p-1 w-full">
+            Fims
+          </button>
+          <button className="border shadow-md rounded-3xl p-1 w-full">
+            Series
+          </button>
+        </div>
+        <div className="flex flex-wrap gap-5 items-center justify-center">
+          <BoxMovie />
+          <BoxMovie />
+          <BoxMovie />
+          <BoxMovie />
+          <BoxMovie />
+        </div>
+      </div>
+    </>
+  );
+};
 export default Movies;
