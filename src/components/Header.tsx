@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink  } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 
 const Header = () => {
@@ -31,14 +31,14 @@ const Header = () => {
       >
         {/* map link navbar */}
         {listMenuLink.map((link) => (
-          <Link
+          <NavLink
             className="hover:text-blue-800 font-bold text-[14px] md:text-[16px] transition-all duration-300"
             key={link.id}
             onClick={() => setShowMenu(false)}
-            to={`/${link.route}`}
+            to={`${link.route}`}
           >
             {link.title}
-          </Link>
+          </NavLink>
         ))}
       </div>
       {/* icon humburger menu */}
