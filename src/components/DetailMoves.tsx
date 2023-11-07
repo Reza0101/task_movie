@@ -24,12 +24,12 @@ const DetailMovie = () => {
             </button>
           </div>
           <div className="flex flex-col my-5 md:items-center gap-3 md:flex-row md:justify-between justify-center">
-            <div className="flex flex-col gap-2 font-[700]">
+            <div className="flex flex-col gap-5 font-[700]">
               <p>Duration: 75 min</p>
               <p>Country: United States of America</p>
               <p>Production: Deal Breaker Studios</p>
             </div>
-            <div className="flex flex-col gap-2 font-[700]">
+            <div className="flex flex-col gap-5 font-[700]">
               <p>Released: 2023-07-07</p>
               <p>Genre: Thriller</p>
               <p>Casts: Enhle Mbali Mlotshwa, Lumko Leqela,</p>

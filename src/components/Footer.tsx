@@ -18,7 +18,7 @@ const Footer = () => {
         </p>
       </div>
       <div className="flex flex-col items-center my-8 md:flex-row md:items-center justify-center md:justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-[12px] md:text-[14px]">
             <p>Website@2023</p>
             <p>Term Of Services</p>
             <p>Sitemap</p>

@@ -5,7 +5,7 @@ import { FiMenu } from "react-icons/fi";
 const Header = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const listMenuLink: { id: number; title: string; route: string }[] = [
-    { id: 1, title: "Home", route: "/Home" },
+    { id: 1, title: "Home", route: "/" },
     { id: 2, title: "Movies", route: "/movies" },
     { id: 3, title: "TV Shows", route: "/tv-shows" },
     { id: 4, title: "Tops IMDB", route: "/top-IMDB" },
@@ -25,7 +25,7 @@ const Header = () => {
       </div>
       {/* links navbar */}
       <div
-        className={`flex absolute sm:translate-x-0 sm:static z-50 transition-all duration-300 top-0 right-0 pt-10 bg-blue-500 sm:h-fit sm:bg-transparent p-5 sm:p-0 h-[100%] flex-col sm:flex-row items-center gap-5 text-white ${
+        className={`flex fixed sm:translate-x-0 sm:static z-50 transition-all duration-300 top-0 right-0 pt-10 bg-blue-500 sm:h-fit sm:bg-transparent p-5 sm:p-0 h-[100%] flex-col sm:flex-row items-center gap-5 text-white ${
           showMenu ? "translate-x-0" : "translate-x-[100%]"
         }`}
       >

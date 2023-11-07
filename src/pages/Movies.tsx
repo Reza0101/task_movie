@@ -1,5 +1,5 @@
 import { AiOutlineSearch } from "react-icons/ai";
-import BoxMovie from "./BoxMovie";
+import BoxMovie from "../components/BoxMovie";
 
 const Movies = () => {
   return (
