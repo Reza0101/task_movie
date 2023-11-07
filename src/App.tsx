@@ -3,6 +3,7 @@ import { useRoutes } from "react-router-dom";
 import Home from './pages/Home'
 
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const route = useRoutes([
@@ -11,9 +12,10 @@ function App() {
   ]);
 
   return (
-    <div>
+    <div className="flex flex-col justify-between min-h-[100vh]">
       <Header />
       {route}
+      <Footer />
     </div>
   );
 }

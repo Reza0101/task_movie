@@ -4,9 +4,9 @@ const Home = () => {
   return (
     <div
       style={{ backgroundImage: "url(" + "./images/landing.png" + ")" }}
-      className="w-full h-[50vh] text-center text-white bg-cover bg-center"
+      className="w-full h-[60vh] md:h-[65vh] lg:h-[70vh] text-center text-white bg-cover bg-center"
     >
-      <div className="w-full h-[50vh] bg-black opacity-[0.7] absolute z-0"></div>
+      <div className="w-full h-[60vh] md:h-[65vh] lg:h-[70vh] bg-black opacity-[0.7] absolute z-0"></div>
       <div className="z-10 relative pt-6">
         <p className="md:text-[48px] text-[25px] font-bold">Website Name</p>
         <p className="md:text-[32px] text-[20px]">

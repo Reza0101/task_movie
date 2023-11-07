@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className="bg-black py-4 px-6 sm:px-14 md:px-28 lg:px-36 flex items-start sm:items-center justify-between w-full">
       <div
-        className={`w-full h-[100%] bg-black opacity-[0.5] absolute top-0 right-0 ${
+        className={`w-full h-[100%] bg-black opacity-[0.5] z-40 absolute top-0 right-0 ${
           showMenu ? "block" : "hidden"
         }`}
         onClick={() => setShowMenu(false)}
@@ -25,7 +25,7 @@ const Header = () => {
       </div>
       {/* links navbar */}
       <div
-        className={`flex absolute sm:translate-x-0 sm:static transition-all duration-300 top-0 right-0 pt-10 bg-blue-500 sm:h-fit sm:bg-transparent p-5 sm:p-0 h-[100%] flex-col sm:flex-row items-center gap-5 text-white ${
+        className={`flex absolute sm:translate-x-0 sm:static z-50 transition-all duration-300 top-0 right-0 pt-10 bg-blue-500 sm:h-fit sm:bg-transparent p-5 sm:p-0 h-[100%] flex-col sm:flex-row items-center gap-5 text-white ${
           showMenu ? "translate-x-0" : "translate-x-[100%]"
         }`}
       >
