@@ -7,19 +7,21 @@ import Footer from "./components/Footer";
 import Movies from "./pages/Movies";
 import DetailMovie from "./components/DetailMoves";
 
+
 function App() {
   const route = useRoutes([
     { path: "/", element: <Home /> },
     { path: "/movies", element: <Movies /> },
     { path: "/movies/:id", element: <DetailMovie /> },
   ]);
-
+  
   return (
-    <div className="flex flex-col justify-between min-h-[100vh]">
-      <Header />
-      {route}
-      <Footer />
-    </div>
+      <div className="flex flex-col justify-between min-h-[100vh]">
+        <Header />
+        {route}
+        <Footer />
+      </div>
+  
   );
 }
 
