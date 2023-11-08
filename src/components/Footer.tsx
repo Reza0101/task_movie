@@ -3,7 +3,7 @@ const Footer = () => {
     <div className="px-6 md:px-28 lg:px-36 py-5 bg-black text-white">
       <div className="flex justify-between gap-5 items-center flex-col md:flex-row text-center">
         <div className="flex items-center gap-1">
-          <img src="./images/logo.png" alt="" />
+          <img src="/images/logo.png" alt="" />
           <p>Website Name</p>
         </div>
         <p className="w-full md:w-[50%]">
@@ -26,9 +26,9 @@ const Footer = () => {
             <p>9anime</p>
         </div>
         <div className="flex items-center justify-between gap-3 my-5 md:my-0">
-            <img src="./images/instagram.png" alt="" />
-            <img src="./images/facebook.png" alt="" />
-            <img src="./images/linkedin.png" alt="" />
+            <img src="/images/instagram.png" alt="" />
+            <img src="/images/facebook.png" alt="" />
+            <img src="/images/linkedin.png" alt="" />
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { AiOutlineSearch } from "react-icons/ai";
 
 const Home = () => {
+
   return (
     <div
       style={{ backgroundImage: "url(" + "./images/landing.png" + ")" }}

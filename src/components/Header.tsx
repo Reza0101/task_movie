@@ -20,7 +20,7 @@ const Header = () => {
         onClick={() => setShowMenu(false)}
       ></div>
       <div className="flex items-center gap-1 md:gap-2">
-        <img className="w-10 md:w-16" src="./images/logo.png" alt="logo" />
+        <img className="w-10 md:w-16" src="/images/logo.png" alt="logo" />
         <p className="text-white">Website Name</p>
       </div>
       {/* links navbar */}
