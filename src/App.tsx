@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Movies from "./pages/Movies";
 import DetailMovie from "./components/DetailMoves";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   
   return (
       <div className="flex flex-col justify-between min-h-[100vh]">
+        <ScrollToTop />
         <Header />
         {route}
         <Footer />
