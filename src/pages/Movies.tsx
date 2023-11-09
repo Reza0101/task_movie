@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import BoxMovie from "../components/BoxMovie";
 import { useQuery } from "react-query";
@@ -5,10 +6,18 @@ import { useState } from "react";
 
 const Movies = () => {
   // state number page
-  const [pageCount, setPageCount] = useState<number>(3);
-  
+  const [pageCount, setPageCount] = useState<number>(1);
+
   // state value input search
   const [searchMovie, setSearchMovie] = useState<string>("");
+
+  // set input value to localstorage
+  useEffect(() => {
+    const valueInput = localStorage.getItem("searchInput");
+    if (valueInput) {
+      setSearchMovie(valueInput);
+    }
+  }, []);
 
   // query fetch all movies
   const { data, isLoading } = useQuery(["movies", pageCount], () =>
@@ -18,13 +27,12 @@ const Movies = () => {
   );
 
   // query featch search movie
-  const {
-    data: searchData,
-    isLoading: searchLoading,
-  } = useQuery(["searchMovie", searchMovie], () =>
-    fetch(
-      `https://moviesapi.ir/api/v1/movies?q=${searchMovie}&page={page}`
-    ).then((res) => res.json())
+  const { data: searchData, isLoading: searchLoading } = useQuery(
+    ["searchMovie", searchMovie],
+    () =>
+      fetch(
+        `https://moviesapi.ir/api/v1/movies?q=${searchMovie}&page={page}`
+      ).then((res) => res.json())
   );
 
   // set array to lenght btn
@@ -38,31 +46,29 @@ const Movies = () => {
 
   // ---------pagination infinte----------------
   // array left btn pagination
-  var btnLeft: any = []
+  var btnLeft: any = [];
 
   // array right btn pagination
-  var btnRight : any = []
+  var btnRight: any = [];
 
   // all btn infinite pagination
-  var contactBtns: any = []
+  var contactBtns: any = [];
 
   if (pageCount > 2) {
     btnLeft = arrayBtn.slice(pageCount - 3, pageCount);
   } else if (pageCount <= 2) {
-    contactBtns = [1, 2, 3]
+    contactBtns = [1, 2, 3];
   }
 
   if (pageCount < arrayBtn.length) {
     btnRight = arrayBtn.slice(pageCount, pageCount + 2);
-  } else if(pageCount === arrayBtn.length - 3) {
-    contactBtns = [23, 24, 25]
+  } else if (pageCount === arrayBtn.length - 3) {
+    contactBtns = [23, 24, 25];
   }
 
   if (pageCount > 2 && pageCount < arrayBtn.length + 1) {
-    contactBtns = btnLeft.concat(btnRight)
+    contactBtns = btnLeft.concat(btnRight);
   }
-
-
 
   // show loading to not movie
   if (isLoading)
@@ -117,7 +123,11 @@ const Movies = () => {
           {!searchMovie &&
             data?.data.map((movie: any) => <BoxMovie {...movie} />)}
 
-          {searchMovie && !searchData && <h1>This Not Movie</h1>}
+          {searchMovie && searchData && (
+            <h1 className="text-[40px] text-blue-500">
+              There is no such movie
+            </h1>
+          )}
 
           {searchLoading ||
             (isLoading && <img src="https://i.stack.imgur.com/ATB3o.gif" />)}
@@ -139,7 +149,8 @@ const Movies = () => {
           >
             Prev
           </button>
-          {!searchMovie && contactBtns &&
+          {!searchMovie &&
+            contactBtns &&
             contactBtns.map((num: any) => (
               <p
                 onClick={() => setPageCount(num)}

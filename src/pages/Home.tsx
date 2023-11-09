@@ -1,7 +1,25 @@
+import { useEffect, useState} from 'react'
 import { AiOutlineSearch } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
+  const navigate = useNavigate()
+    
+  // value input
+  const [searchValue, setSearchValue] = useState('')
+
+  //By changing the input value, that value is saved in local storage
+  useEffect(() => {
+      localStorage.setItem('searchInput', searchValue)
+  }, [searchValue])
+
+  // switch page to click to Enter
+  document.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+          navigate('/movies')
+      }        
+  })
   return (
     <div
       style={{ backgroundImage: "url(" + "./images/landing.png" + ")" }}
@@ -14,16 +32,19 @@ const Home = () => {
           Your Gateway To Movie Magic
         </p>
         <div className="mx-auto my-8 flex items-center justify-between bg-white rounded-3xl max-w-[80%] sm:w-[70%] md:w-[50%]">
-          <input
-            className="border-none outline-none w-full text-black bg-transparent p-3 h-full"
-            type="text"
-            placeholder="Enter Keywords"
-          />
-          <div className="text-white flex items-center bg-blue-500 gap-1 m-2 rounded-xl p-1 w-[35%] md:w-[23%] justify-center cursor-pointer">
-            <AiOutlineSearch className='text-xl' />
-            <p>Search</p>
-          </div>
-        </div>
+      <input
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+        className="border-none outline-none w-full text-black bg-transparent p-3 h-full"
+        type="text"
+        placeholder="Enter Keywords"
+      />
+      <div onClick={() => navigate('/movies')} className="text-white flex items-center bg-blue-500 gap-1 m-2 rounded-xl p-1 w-[35%] md:w-[23%] justify-center cursor-pointer">
+        <AiOutlineSearch className="text-xl" />
+        <p>Search</p>
+      </div>
+    </div>
+
       </div>
     </div>
   );
