@@ -1,7 +1,11 @@
-body, * {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,400;1,500&display=swap');
+body,
+* {
     overflow-x: hidden;
     scroll-behavior: smooth;
+    font-family: 'Montserrat'
 }
+
 a.active {
     color: blue;
 }
