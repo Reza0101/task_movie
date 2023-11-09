@@ -4,18 +4,22 @@ import { useQuery } from "react-query";
 import { useState } from "react";
 
 const Movies = () => {
-  const [pageCount, setPageCount] = useState<number>(1);
+  // state number page
+  const [pageCount, setPageCount] = useState<number>(3);
+  
+  // state value input search
   const [searchMovie, setSearchMovie] = useState<string>("");
 
+  // query fetch all movies
   const { data, isLoading } = useQuery(["movies", pageCount], () =>
     fetch(`https://moviesapi.ir/api/v1/movies?page=${pageCount}`).then((res) =>
       res.json()
     )
   );
 
+  // query featch search movie
   const {
     data: searchData,
-    error: searchError,
     isLoading: searchLoading,
   } = useQuery(["searchMovie", searchMovie], () =>
     fetch(
@@ -23,10 +27,8 @@ const Movies = () => {
     ).then((res) => res.json())
   );
 
-  console.log("searchData", searchData, searchError, searchLoading);
-
+  // set array to lenght btn
   let arrayBtn = [];
-
   if (data) {
     var { page_count, current_page } = data?.metadata;
     for (let i = 1; i <= page_count; i++) {
@@ -34,6 +36,35 @@ const Movies = () => {
     }
   }
 
+  // ---------pagination infinte----------------
+  // array left btn pagination
+  var btnLeft: any = []
+
+  // array right btn pagination
+  var btnRight : any = []
+
+  // all btn infinite pagination
+  var contactBtns: any = []
+
+  if (pageCount > 2) {
+    btnLeft = arrayBtn.slice(pageCount - 3, pageCount);
+  } else if (pageCount <= 2) {
+    contactBtns = [1, 2, 3]
+  }
+
+  if (pageCount < arrayBtn.length) {
+    btnRight = arrayBtn.slice(pageCount, pageCount + 2);
+  } else if(pageCount === arrayBtn.length - 3) {
+    contactBtns = [23, 24, 25]
+  }
+
+  if (pageCount > 2 && pageCount < arrayBtn.length + 1) {
+    contactBtns = btnLeft.concat(btnRight)
+  }
+
+
+
+  // show loading to not movie
   if (isLoading)
     return (
       <div className="flex items-center justify-center">
@@ -92,17 +123,24 @@ const Movies = () => {
             (isLoading && <img src="https://i.stack.imgur.com/ATB3o.gif" />)}
         </div>
 
-        <div className="flex items-center justify-center my-5">
+        {/* pagination section */}
+        <div
+          className={`flex items-center justify-center my-5 ${
+            searchMovie && "hidden"
+          }`}
+        >
           <button
             className={`cursor-pointer  px-2 rounded-xl ${
-              pageCount > 1 ? "border border-blue-500" : "opacity-[0.5] cursor-default text-blue-500"
+              pageCount > 1
+                ? "border border-blue-500"
+                : "opacity-[0.5] cursor-default text-blue-500"
             }`}
             onClick={() => pageCount > 1 && setPageCount((prev) => prev - 1)}
           >
             Prev
           </button>
-          {!searchMovie &&
-            arrayBtn.map((num: any) => (
+          {!searchMovie && contactBtns &&
+            contactBtns.map((num: any) => (
               <p
                 onClick={() => setPageCount(num)}
                 className={`${
@@ -114,10 +152,13 @@ const Movies = () => {
             ))}
           <button
             onClick={() =>
-              pageCount < arrayBtn.length &&
-              setPageCount((prev) => prev + 1)
+              pageCount < arrayBtn.length && setPageCount((prev) => prev + 1)
             }
-            className={`cursor-pointer rounded-xl px-2 ${pageCount < arrayBtn.length ? 'border border-blue-500' : 'opacity-[0.5] cursor-default text-blue-500'}`}
+            className={`cursor-pointer rounded-xl px-2 ${
+              pageCount < arrayBtn.length
+                ? "border border-blue-500"
+                : "opacity-[0.5] cursor-default text-blue-500"
+            }`}
           >
             Next
           </button>

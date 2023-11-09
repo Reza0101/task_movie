@@ -3,8 +3,10 @@ import BoxMovie from "./BoxMovie";
 import { useQuery } from "react-query";
 
 const DetailMovie = () => {
+  // get id in params
   const { id } = useParams();
 
+  // get movie by id f
   const { data, isLoading } = useQuery("singleMovie", () =>
     fetch(`https://moviesapi.ir/api/v1/movies/${id}`).then((res) => res.json())
   , {
@@ -12,6 +14,7 @@ const DetailMovie = () => {
   })
   console.log(data);
 
+  // show loading 
   if (isLoading)
     return (
       <div className="flex items-center justify-center">
