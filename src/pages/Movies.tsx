@@ -116,7 +116,7 @@ const Movies = () => {
             Series
           </button>
         </div>
-        <div className="flex flex-wrap gap-5 items-center justify-center">
+        <div className="flex flex-wrap min-h-[50vh] gap-5 items-center justify-center">
           {searchMovie &&
             searchData?.data.map((movie: any) => <BoxMovie {...movie} />)}
 
@@ -139,6 +139,7 @@ const Movies = () => {
             searchMovie && "hidden"
           }`}
         >
+          {/* prev btn */}
           <button
             className={`cursor-pointer  px-2 rounded-xl ${
               pageCount > 1
@@ -149,6 +150,7 @@ const Movies = () => {
           >
             Prev
           </button>
+          {/* other btns */}
           {!searchMovie &&
             contactBtns &&
             contactBtns.map((num: any) => (
@@ -161,6 +163,8 @@ const Movies = () => {
                 {num}
               </p>
             ))}
+
+          {/* Next btn */}
           <button
             onClick={() =>
               pageCount < arrayBtn.length && setPageCount((prev) => prev + 1)
