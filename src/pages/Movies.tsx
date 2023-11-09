@@ -94,19 +94,19 @@ const Movies = () => {
               type="text"
               placeholder="Enter Keywords"
             />
-            <div className="text-white flex items-center bg-blue-500 m-2 rounded-xl p-1 w-[30%] md:w-[23%] justify-center cursor-pointer">
-              <AiOutlineSearch />
+            <div className="text-white flex items-center bg-blue-500 m-2 gap-1 rounded-xl p-1 w-[30%] md:w-[23%] justify-center cursor-pointer">
+              <AiOutlineSearch className="text-xl" />
               <p>Search</p>
             </div>
           </div>
         </div>
       </div>
       <div className="my-5 px-6 md:px-28 lg:px-36 mx-auto w-full">
-        <div className="flex items-center w-full gap-2 py-4">
-          <button className="border shadow-sm border-blue-500 rounded-2xl p-1 w-full">
+        <div className="flex items-center w-full gap-2 py-4 font-[700]">
+          <button className="border shadow-sm border-blue-500 rounded-2xl p-1 py-2 w-full">
             Fims
           </button>
-          <button className="border shadow-md rounded-3xl p-1 w-full">
+          <button className="border shadow-md rounded-3xl p-1 py-2 w-full">
             Series
           </button>
         </div>

@@ -3,7 +3,10 @@ import { NavLink  } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 
 const Header = () => {
+  // flagg show menu
   const [showMenu, setShowMenu] = useState<boolean>(false);
+
+  // list link navbar
   const listMenuLink: { id: number; title: string; route: string }[] = [
     { id: 1, title: "Home", route: "/" },
     { id: 2, title: "Movies", route: "/movies" },
@@ -23,9 +26,10 @@ const Header = () => {
         <img className="w-10 md:w-16" src="/images/logo.png" alt="logo" />
         <p className="text-white">Website Name</p>
       </div>
+      
       {/* links navbar */}
       <div
-        className={`flex fixed sm:translate-x-0 sm:static z-50 transition-all duration-300 top-0 right-0 pt-10 bg-blue-500 sm:h-fit sm:bg-transparent p-5 sm:p-0 h-[100%] flex-col sm:flex-row items-center gap-5 text-white ${
+        className={`flex fixed sm:translate-x-0 sm:static z-50 transition-all duration-300 top-0 right-0 pt-10 bg-blue-500 sm:h-fit sm:bg-transparent px-5 sm:p-0 h-[100%] flex-col sm:flex-row items-center gap-5 text-white ${
           showMenu ? "translate-x-0" : "translate-x-[100%]"
         }`}
       >

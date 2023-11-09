@@ -19,8 +19,8 @@ const Home = () => {
             type="text"
             placeholder="Enter Keywords"
           />
-          <div className="text-white flex items-center bg-blue-500 m-2 rounded-xl p-1 w-[35%] md:w-[23%] justify-center cursor-pointer">
-            <AiOutlineSearch />
+          <div className="text-white flex items-center bg-blue-500 gap-1 m-2 rounded-xl p-1 w-[35%] md:w-[23%] justify-center cursor-pointer">
+            <AiOutlineSearch className='text-xl' />
             <p>Search</p>
           </div>
         </div>
