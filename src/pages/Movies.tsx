@@ -27,13 +27,18 @@ const Movies = () => {
   );
 
   // query featch search movie
-  const { data: searchData, isLoading: searchLoading } = useQuery(
-    ["searchMovie", searchMovie],
-    () =>
-      fetch(
-        `https://moviesapi.ir/api/v1/movies?q=${searchMovie}&page={page}`
-      ).then((res) => res.json())
+  const {
+    data: searchData,
+    isLoading: searchLoading,
+  } = useQuery(["searchMovie", searchMovie], () =>
+    fetch(
+      `https://moviesapi.ir/api/v1/movies?q=${searchMovie}&page={page}`
+    ).then((res) => res.json())
   );
+
+  console.log(searchData);
+  
+
 
   // set array to lenght btn
   let arrayBtn = [];
@@ -82,9 +87,9 @@ const Movies = () => {
     <>
       <div
         style={{ backgroundImage: "url(" + "./images/landing.png" + ")" }}
-        className="w-full h-[30vh] text-center text-white bg-cover bg-center"
+        className="w-full h-[40vh] text-center text-white bg-cover bg-center"
       >
-        <div className="w-full h-[30vh] bg-black opacity-[0.7] absolute z-0"></div>
+        <div className="w-full h-[40vh] bg-black opacity-[0.7] absolute z-0"></div>
         <div className="z-10 relative pt-6">
           <p className="md:text-[38px] text-[20px] font-bold">
             Wanna watch free movies & TV?
@@ -95,7 +100,9 @@ const Movies = () => {
           <div className="mx-auto my-8 flex items-center justify-between bg-white rounded-3xl max-w-[80%] sm:w-[70%] md:w-[50%]">
             <input
               value={searchMovie}
-              onChange={(e) => setSearchMovie(e.target.value)}
+              onChange={(e) => {
+                setSearchMovie(e.target.value);
+              }}
               className="border-none outline-none w-full text-black bg-transparent p-3 h-full"
               type="text"
               placeholder="Enter Keywords"
@@ -123,8 +130,10 @@ const Movies = () => {
           {!searchMovie &&
             data?.data.map((movie: any) => <BoxMovie {...movie} />)}
 
-          {searchMovie && searchData && (
-            <h1 className="text-[40px] text-blue-500">
+          {searchMovie && (searchData === 'undefind' || !searchData?.data?.length) && (
+            <h1
+              className={`text-[40px] text-center text-blue-500 `}
+            >
               There is no such movie
             </h1>
           )}
