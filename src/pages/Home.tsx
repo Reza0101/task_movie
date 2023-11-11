@@ -1,23 +1,22 @@
 import { useEffect, useState} from 'react'
 import { AiOutlineSearch } from "react-icons/ai";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Home = () => {
 
   const navigate = useNavigate()
-    
-  // value input
+  
+    // value input
   const [searchValue, setSearchValue] = useState('')
 
-  //By changing the input value, that value is saved in local storage
-  useEffect(() => {
-      localStorage.setItem('searchInput', searchValue)
-  }, [searchValue])
 
   // switch page to click to Enter
   document.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
-          navigate('/movies')
+          navigate({
+            pathname: '/movies',
+            search: `?search=${searchValue}`
+          })
       }        
   })
   return (
@@ -39,10 +38,13 @@ const Home = () => {
         type="text"
         placeholder="Enter Keywords"
       />
-      <div onClick={() => navigate('/movies')} className="text-white flex items-center bg-blue-500 gap-1 m-2 rounded-xl p-1 w-[35%] md:w-[23%] justify-center cursor-pointer">
+      <Link to={{
+        pathname: '/movies',
+        search: `?search=${searchValue}`
+      }} className="text-white flex items-center bg-blue-500 gap-1 m-2 rounded-xl p-1 w-[35%] md:w-[23%] justify-center cursor-pointer">
         <AiOutlineSearch className="text-xl" />
         <p>Search</p>
-      </div>
+      </Link>
     </div>
 
       </div>

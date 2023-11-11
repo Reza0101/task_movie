@@ -5,17 +5,24 @@ import { useQuery } from "react-query";
 import { useState } from "react";
 
 const Movies = () => {
+
+
+  
+  
+  
   // state number page
   const [pageCount, setPageCount] = useState<number>(1);
-
+  
   // state value input search
   const [searchMovie, setSearchMovie] = useState<string>("");
+  
+  const myParam = new URLSearchParams(location.search).get('search')
+
 
   // set input value to localstorage
   useEffect(() => {
-    const valueInput = localStorage.getItem("searchInput");
-    if (valueInput) {
-      setSearchMovie(valueInput);
+    if (myParam) {
+      setSearchMovie(myParam)
     }
   }, []);
 
@@ -36,7 +43,6 @@ const Movies = () => {
     ).then((res) => res.json())
   );
 
-  console.log(searchData);
   
 
 
